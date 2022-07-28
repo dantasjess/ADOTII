@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -13,7 +12,7 @@ import Image from 'next/image';
 import Logo from '../../public/logo.png';
 import Grid from '@mui/material/Grid';
 
-const pages = ['Quem somos', 'Loja', 'Quero adotar', 'Apadrinhar '];
+const pages = ['Quem somos', 'Adotar', 'Apadrinhar '];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -82,27 +81,24 @@ const ResponsiveAppBar = () => {
 
             <Grid item sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} justifyContent="flex-end">
               <Button
-              key='1'
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-              Quem somos
+                <Typography sx={{ fontFamily: 'Comfortaa' }}>Quem somos</Typography>
               </Button>
 
               <Button
-              key='2'
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-              Quero adotar
+                <Typography sx={{ fontFamily: 'Comfortaa' }}>Adotar</Typography>
               </Button>
 
               <Button
-              key='3'
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-              Apadrinhar
+                <Typography sx={{ fontFamily: 'Comfortaa' }}>Apadrinhar</Typography>
               </Button>
             
             </Grid>
