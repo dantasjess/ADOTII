@@ -9,6 +9,7 @@ specifiers:
   eslint: 8.19.0
   eslint-config-next: 12.2.2
   next: 12.2.2
+  pnpm: ^7.6.0
   react: 18.2.0
   react-dom: 18.2.0
   styled-components: ^5.3.5
@@ -21,6 +22,7 @@ dependencies:
   '@mui/material': 5.9.1_qsuhhlyfbpdicstla2jcf7xfmy
   '@mui/styled-engine-sc': 5.8.0_styled-components@5.3.5
   next: 12.2.2_biqbaboplfbrettd7655fr4n2y
+  pnpm: 7.8.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   styled-components: 5.3.5_biqbaboplfbrettd7655fr4n2y
@@ -2145,6 +2147,12 @@ packages:
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+
+  /pnpm/7.8.0:
+    resolution: {integrity: sha512-jzb9/gto4nwuVA2itTRk0PJhuaZcA1NBRB298UzXhqKZQMjtHCS+KLzh7RWk5n3g+KnMg5FHr6Mwg1L62dBz1A==}
+    engines: {node: '>=14.6'}
+    hasBin: true
+    dev: false
 
   /postcss-value-parser/4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
