@@ -1,7 +1,11 @@
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import Link from 'next/link';
+import { Typography } from '@mui/material';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import Button from '@mui/material/Button';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function Footer() {
   return (
@@ -15,11 +19,13 @@ export default function Footer() {
         <Container maxWidth="lg">
           <Grid container spacing={5}>
 
-
             <Grid item xs={12} sm={3}>
-              <Box borderBottom={1}>ADOÇÃO</Box>
+              <Box marginBottom={1}>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder" }}>ADOÇÃO</Typography>
+                
+              </Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link href="/" color="inherit" sx={{textDecoration: 'none'}}>
                   Quero adotar
                 </Link>
               </Box>
@@ -27,9 +33,11 @@ export default function Footer() {
 
 
             <Grid item xs={12} sm={3}>
-              <Box borderBottom={1}>APADRINHAMENTO</Box>
+              <Box marginBottom={1}>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder" }}>APADRINHAMENTO</Typography>
+              </Box>
               <Box> 
-                <Link href="/" color="inherit">
+                <Link href="/" color="inherit" sx={{textDecoration: 'none'}}>
                   Quero apadrinhar
                 </Link>
               </Box>
@@ -37,9 +45,11 @@ export default function Footer() {
 
 
             <Grid item xs={12} sm={3}>
-              <Box borderBottom={1}>QUEM SOMOS</Box>
+              <Box marginBottom={1}>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder" }}>QUEM SOMOS</Typography>
+              </Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link href="/quem_somos" color="inherit" sx={{textDecoration: 'none'}}>
                   Conheça o coletivo
                 </Link>
               </Box>
@@ -47,17 +57,33 @@ export default function Footer() {
 
 
             <Grid item xs={12} sm={3}>
-              <Box borderBottom={1}>CONTATO</Box>
+              <Box marginBottom={1}>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder" }}>CONTATO</Typography>
+              </Box>
               <Box>
-                <Link href="/" color="inherit">
-                  icones....
+                <Box>
+
+                  <Link href="/" color="inherit" sx={{textDecoration: 'none'}}>
+                    <Button startIcon={<InstagramIcon />}>
+                      Instagram
+                    </Button>
+                  </Link>
+                </Box>
+
+                <Box>
+                  
+                <Link href="/" color="inherit" sx={{textDecoration: 'none'}}>
+                  <Button startIcon={<WhatsAppIcon />}>
+                    Whatsapp
+                  </Button>
                 </Link>
+                </Box>
+
+
               </Box>
             </Grid>
 
           </Grid>
-
-          
 
         </Container>
       </Box>

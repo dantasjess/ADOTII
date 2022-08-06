@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Image from 'next/image';
 import Logo from '../../public/logo.png';
 import Grid from '@mui/material/Grid';
+import Link from 'next/link';
 
 const pages = ['Quem somos', 'Adotar', 'Apadrinhar '];
 
@@ -75,8 +76,10 @@ const ResponsiveAppBar = () => {
               </Menu>
             </Grid>
 
-            <Grid item>
-              <Image src={Logo} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            <Grid item padding={2}>
+              <Link href={"/"}>
+                <Image alt='logo-adotii' src={Logo} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              </Link>
             </Grid>         
 
             <Grid item sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} justifyContent="flex-end">
@@ -84,21 +87,23 @@ const ResponsiveAppBar = () => {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-                <Typography sx={{ fontFamily: 'Comfortaa' }}>Quem somos</Typography>
+                <Link href={"/quem_somos"}>
+                  <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder" }}>Quem somos</Typography>
+                </Link>
               </Button>
 
               <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-                <Typography sx={{ fontFamily: 'Comfortaa' }}>Adotar</Typography>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder"  }}>Adotar</Typography>
               </Button>
 
               <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-                <Typography sx={{ fontFamily: 'Comfortaa' }}>Apadrinhar</Typography>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder"  }}>Apadrinhar</Typography>
               </Button>
             
             </Grid>
