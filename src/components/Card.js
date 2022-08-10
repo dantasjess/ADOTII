@@ -10,30 +10,29 @@ import Grid from '@mui/material/Grid';
 
 export default function MediaCard() {
   return (
-    <Card sx={{ maxWidth: 300, boxShadow: 0 }}>
+    <Card sx={{ maxWidth: 200, boxShadow: 0 }}>
       
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item>
-            <Avatar sx={{height: 200, width: 200 }} src="https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino-1280x720.jpg" />
+            <Avatar sx={{height: 150, width: 150 }} src="https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino-1280x720.jpg" />
         </Grid>
 
-        <Grid item sx={{textAlign: "center"}} >
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder", color: "#EC7E31"}}>
-                Lizard
+        <Grid item sx={{textAlign: "center", paddingTop: "10px"}} >
+            <CardContent sx={{padding:"2px 2px 2px 2px"}}>
+                <Typography variant="h6" component="div" sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder", color: "#EC7E31"}}>
+                Jubileu
                 </Typography>
                 <Typography variant = "body2" sx={{ fontFamily: 'Comfortaa', color: "#09237D"}}>
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Jubileu tem 4 anos, adora caçar e está querendo muito uma família!
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button variant="contained" size="medium" sx={{backgroundColor: "#EC7E31"}}>Detalhes</Button>
-            </CardActions>
-        
         </Grid>
-      </Grid>
+        <Grid item>
+          <CardActions>
+                  <Button variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, padding: "2px 20px 2px 20px", textTransform: 'none'}}>Detalhes</Button>
+          </CardActions>
+        </Grid>
+        </Grid>
     </Card>
-    
   );
 }
