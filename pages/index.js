@@ -8,11 +8,11 @@ export default function Home() {
     <>
       <section>
         <TitleSection text='Conheça nossos gatinhos' />
+        <Card />
+        <br/>
+        <Button variant="contained" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, padding: "2px 10px 2px 10px", textTransform: 'none'}}>Ver mais</Button>
       </section>
-      <Card />
-      <br/>
-      <Button variant="contained" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, padding: "2px 10px 2px 10px", textTransform: 'none'}}>Ver mais</Button>
-
+      
     </>
   );
 }
