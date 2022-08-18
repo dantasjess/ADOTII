@@ -34,11 +34,11 @@ export default function Home() {
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
       >
-        <TitleSection text='Quem somos?'/>      
+        <TitleSection text='Propósito'/>      
         <Paragraph text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"/>        
 
         {/*w=164&h=164&fit=crop&auto=format`*/}
-        <ImageList cols={4} rowHeight={300}>
+        <ImageList cols={4} rowHeight={320}>
           {images.map((image) => (
             <ImageListItem key={image}>
               <img
