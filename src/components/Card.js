@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 
 export default function MediaCard() {
   return (
-    <Card sx={{ maxWidth: 200, boxShadow: 0 }}>
+    <Card sx={{ maxWidth: 200, boxShadow: 0, margin: "0 50px", background: "#ECFEFF" }}>
       
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item>
@@ -27,9 +27,10 @@ export default function MediaCard() {
                 </Typography>
             </CardContent>
         </Grid>
+        
         <Grid item>
           <CardActions>
-                  <Button variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, padding: "2px 20px 2px 20px", textTransform: 'none'}}>Detalhes</Button>
+                  <Button variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, padding: "2px 20px 2px 20px", textTransform: 'none', borderRadius: "12px"}}>Detalhes</Button>
           </CardActions>
         </Grid>
         </Grid>

@@ -88,7 +88,7 @@ const ResponsiveAppBar = () => {
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
                 <Link href={"/quem_somos"}>
-                  <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder" }}>Quem somos</Typography>
+                  <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder",textTransform: 'none', fontSize: 20 }}>Quem somos</Typography>
                 </Link>
               </Button>
 
@@ -96,14 +96,14 @@ const ResponsiveAppBar = () => {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder"  }}>Adotar</Typography>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder", textTransform: 'none', fontSize: 20 }}>Adotar</Typography>
               </Button>
 
               <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: '#09237D', display: 'block' }}
               >
-                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder"  }}>Apadrinhar</Typography>
+                <Typography sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder", textTransform: 'none', fontSize: 20 }}>Apadrinhar</Typography>
               </Button>
             
             </Grid>
