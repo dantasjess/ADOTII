@@ -17,3 +17,7 @@ a {
   box-sizing: border-box;
 }
 
+.section {
+  margin: 0 50px;
+}
+
