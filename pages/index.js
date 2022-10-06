@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <section>
-        <Typography sx={{margin: "0 50px"}}><TitleSection text='Conheça nossos gatinhos'/></Typography>
+        <TitleSection text='Conheça nossos gatinhos'/>
         <Card />
         <Grid container direction="column" justifyContent="center" alignItems="center">
           <Button variant="contained" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 18, padding: "0.2% 20px 0.2% 20px", textTransform: 'none',  borderRadius: "12px", margin: "20px 0px 80px 0px"}}><Link href={"/gatos"}>Ver mais</Link></Button>
@@ -23,7 +23,7 @@ export default function Home() {
               <Button variant="contained" sx={{backgroundColor: "#09237D", textTransform: 'none', borderRadius: "12px", margin: "0px 0px 40px 50px"}}><Typography sx={{fontFamily: "Comfortaa", fontSize: 18, padding: "1% 200px 1% 200px"}}>Quero apadrinhar</Typography></Button>
           </Grid>
         </Grid>
-        <Typography sx={{margin: "0 50px", fontSize: 40, fontFamily: "Comfortaa", color: "#EC7E31"}}>Por que adotar?</Typography>
+        <TitleSection text="Por que adotar?"/>
       </section>
       
     </>
