@@ -10,8 +10,8 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      <section>
-        <Typography sx={{margin: "0 50px"}}><TitleSection text='Conheça nossos gatinhos'/></Typography>
+      <section className='section'>
+        <TitleSection text='Conheça nossos gatinhos'/>
         <Card />
         <br/>
         <Box sx={{ width: '100%' }}>

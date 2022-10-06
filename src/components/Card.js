@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 
 export default function MediaCard() {
   return (
-    <Card sx={{ maxWidth: 200, boxShadow: 0, margin: "0 50px", background: "#ECFEFF" }}>
+    <Card sx={{ maxWidth: 200, boxShadow: 0, margin: "0 25px", background: "#ECFEFF" }}>
       
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item>

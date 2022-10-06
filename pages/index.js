@@ -9,7 +9,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      <section>
+      <section className='section'>
         <TitleSection text='Conheça nossos gatinhos'/>
         <Card />
         <Grid container direction="column" justifyContent="center" alignItems="center">

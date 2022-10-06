@@ -16,6 +16,7 @@ export default function Home() {
   return (
     <>
       <Box
+        className='section'
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
       >
@@ -31,6 +32,7 @@ export default function Home() {
       </Box>
 
       <Box
+        className='section'
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
       >
