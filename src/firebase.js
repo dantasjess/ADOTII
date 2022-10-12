@@ -12,17 +12,18 @@ import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
 
-  apiKey: process.env.API_KEY,
+  apiKey: "AIzaSyBDgPedr5x376cQxV5ICHgUfggGBnp5LrM",
 
-  authDomain: process.env.AUTH_DOMAIN,
+  authDomain: "adotii.firebaseapp.com",
 
-  projectId: process.env.PROJECT_ID,
+  projectId: "adotii",
 
-  storageBucket: process.env.STORAGE_BUCKET,
+  storageBucket: "adotii.appspot.com",
 
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  messagingSenderId: "794809179574",
 
-  appId: process.env.APP_ID
+  appId: "1:794809179574:web:1b065657e42a7cef88b517"
+
 
 };
 
@@ -33,3 +34,5 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+export { auth }
