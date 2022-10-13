@@ -2,6 +2,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase, ref, onValue, set, get, child, remove, push } from 'firebase/database';
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -35,4 +36,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export { auth }
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);
+export { auth, database, ref, onValue, set, get, child, remove, push };
+export default app;

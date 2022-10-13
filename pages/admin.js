@@ -18,7 +18,7 @@ import { useRouter } from 'next/router';
 export default function SignIn() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { login, currentUser } = useAuth();
+  const { login, currentUser, logout } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -29,6 +29,18 @@ export default function SignIn() {
     setError("");
     setLoading(true);
     await login(email, password);
+    //router.push("/");
+
+
+    setLoading(false);
+  };
+
+  async function handleLogout(e) {
+    e.preventDefault();
+
+    setError("");
+    setLoading(true);
+    await logout();
     //router.push("/");
 
 
@@ -91,6 +103,17 @@ export default function SignIn() {
             onClick={(e) => handleSubmit(e)}
           >
             Sign In
+          </Button>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={loading}
+            onClick={(e) => handleLogout(e)}
+          >
+            Logout
           </Button>
         </Box>
       </Box>
