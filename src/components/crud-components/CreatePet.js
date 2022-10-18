@@ -20,12 +20,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
 
-export function SelectSize({ changeSize }) {
+export function SelectSize({ changeSize, defaultSize }) {
   const [size, setSize] = useState('');
-
-  const handleChange = (event) => {
-    changeSize(event.target.value);
-  };
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -34,9 +30,9 @@ export function SelectSize({ changeSize }) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={size}
           label="Porte"
-          onChange={handleChange}
+          defaultValue={defaultSize}
+          onChange={(e) => changeSize(e.target.value)}
         >
           <MenuItem value='small'>Pequeno</MenuItem>
           <MenuItem value='medium'>Médio</MenuItem>
@@ -47,15 +43,16 @@ export function SelectSize({ changeSize }) {
   );
 }
 
-export function RadioButtonsGroupGender({ changeGender }) {
+export function RadioButtonsGroupGender({ changeGender, gender, defaultGender }) {
   return (
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">Sexo</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
         name="radio-buttons-group"
-        onChange={(e) => changeGender(e.target.value)}
+        value={gender}
+        defaultValue={defaultGender}
+        onChange={(e) => { changeGender(e.target.value) }}
       >
         <FormControlLabel value="female" control={<Radio />} label="Fêmea" />
         <FormControlLabel value="male" control={<Radio />} label="Macho" />
@@ -64,14 +61,15 @@ export function RadioButtonsGroupGender({ changeGender }) {
   );
 }
 
-export function RadioButtonsGroupCastration({ changeCastrated }) {
+export function RadioButtonsGroupCastration({ changeCastrated, castrated, defaultCastration }) {
     return (
       <FormControl>
         <FormLabel id="demo-radio-buttons-group-label">Castrado?</FormLabel>
         <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
           name="radio-buttons-group"
+          value={castrated}
+          defaultValue={defaultCastration}
           onChange={(e) => changeCastrated(e.target.value)}
         >
           <FormControlLabel value="yes" control={<Radio />} label="Sim" />
@@ -118,16 +116,16 @@ export default function CreatePet() {
         handleClose();
     }
 
-    const changeSize = (e) => {
-        setSize(e.value)
+    const changeSize = (value) => {
+        setSize(value)
     };
 
-    const changeGender = (e) => {
-        setGender(e.value)
+    const changeGender = (value) => {
+        setGender(value)
     };
 
-    const changeCastrated = (e) => {
-        setCastrated(e.value)
+    const changeCastrated = (value) => {
+        setCastrated(value)
     };
 
     return (
@@ -140,9 +138,9 @@ export default function CreatePet() {
                 <DialogContent>
                     <DialogContentText>Insira as informações necessárias para o cadastro do pet:</DialogContentText>
                     <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" label="Nome" type="text" fullWidth variant="standard" />
-                    <RadioButtonsGroupGender changeGender={changeGender} />
+                    <RadioButtonsGroupGender changeGender={changeGender} gender={gender} />
                     <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" label="Idade" type="number" fullWidth variant="standard" />
-                    <RadioButtonsGroupCastration changeCastrated={changeCastrated} />
+                    <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} />
                     <SelectSize changeSize={changeSize} />
                     <TextField onChange={(e) => setVaccine(e.target.value)} margin="dense" id="vaccines" label="Vacinas" type="text" fullWidth variant="standard" />
                     <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" label="Descrição" type="text" fullWidth variant="standard" />
