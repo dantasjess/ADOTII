@@ -7,10 +7,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Avatar } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import DeletePet from './crud-components/DeletePet';
+import EditPet from './crud-components/EditPet';
 
-export default function MediaCard() {
+export default function MediaCard({ name, desc, id, pet }) {
   return (
     <Card sx={{ maxWidth: 200, boxShadow: 0, margin: "0 25px", background: "#ECFEFF" }}>
+      <EditPet id={id} pet={pet} />
+      <DeletePet id={id} />
       
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item>
@@ -20,10 +24,10 @@ export default function MediaCard() {
         <Grid item sx={{textAlign: "center", paddingTop: "10px"}} >
             <CardContent sx={{padding:"2px 2px 2px 2px"}}>
                 <Typography variant="h6" component="div" sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder", color: "#EC7E31"}}>
-                Jubileu
+                {name}
                 </Typography>
                 <Typography variant = "body2" sx={{ fontFamily: 'Comfortaa', color: "#09237D"}}>
-                Jubileu tem 4 anos, adora caçar e está querendo muito uma família!
+                {desc}
                 </Typography>
             </CardContent>
         </Grid>
