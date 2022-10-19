@@ -21,3 +21,18 @@ a {
   margin: 0 50px;
 }
 
+
+.div-text-field {
+  padding-top: 15px;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+}
+
+.login-text-field fieldset {
+  border-radius: 16px;
+  background-color: #FFF;
+} 
+
+.login-text-field fieldset::placeholder {
+  color: #000;
+} 
