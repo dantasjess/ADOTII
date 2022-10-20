@@ -28,11 +28,15 @@ export default function Home() {
     <>
       <section className='section'>
         <TitleSection text='Conheça nossos gatinhos'/>
-        {pets.map((pet) => {
-          return (
-            <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
-          );
-        })}
+        <Grid container direction="row">
+          {pets.map((pet) => {
+            return (
+              <Grid item>
+                <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
+              </Grid>
+            );
+          })}
+        </Grid>
         <Grid container direction="column" justifyContent="center" alignItems="center">
           <Button variant="contained" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 18, padding: "0.2% 20px 0.2% 20px", textTransform: 'none',  borderRadius: "12px", margin: "20px 0px 80px 0px"}}><Link href={"/gatos"}>Ver mais</Link></Button>
         </Grid>

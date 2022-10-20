@@ -32,11 +32,15 @@ export default function PetList() {
       <section className='section'>
         <TitleSection text='Administração dos Gatos'/>
         <CreatePet />
-        {pets.map((pet) => {
-          return (
-            <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
-          );
-        })}
+        <Grid container direction="row">
+          {pets.map((pet) => {
+            return (
+              <Grid item>
+                <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
+              </Grid>
+            );
+          })}
+        </Grid>
 
         
       </section>
