@@ -1,9 +1,49 @@
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import { useState } from "react";
+import { useAuth } from '../src/contexts/AuthContext';
+import { useRouter } from 'next/router';
+import Button from '@mui/material/Button';
 
-export default function Home() {
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles((theme) => ({
+  input: {
+    background: "rgba(255, 255, 255, 0.8)",
+    borderRadius: 16
+  }
+}));
+
+export default function SignIn() {
+  const classes = useStyles();
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const { login, currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    setError("");
+    setLoading(true);
+    await login(email, password);
+ 
+    setLoading(false);
+  };
+
+  async function handleLogout(e) {
+    e.preventDefault();
+
+    setError("");
+    setLoading(true);
+    await logout();
+
+    setLoading(false);
+  };
+
   return (
     <>
       <Box
@@ -22,18 +62,63 @@ export default function Home() {
         <Typography align="center" sx={{ fontFamily: 'Comfortaa', fontSize: 42, color: '#193987', marginTop: "5%"}}>Acesso</Typography>
 
         <form style={{ marginTop: "5%" }}>
-            <div className='div-text-field'>
-              <TextField className='login-text-field' fullWidth id="outlined-basic" label="Login" variant="outlined"
-                    InputLabelProps={{style: {fontFamily: "Comfortaa", fontSize: 14}}}
-                    sx={{ maxWidth: "593px" }}
-              />
-            </div>
-            <div className='div-text-field'>
-              <TextField className='login-text-field' fullWidth id="outlined-basic" label="Senha" variant="outlined" 
-                    InputLabelProps={{style: {fontFamily: "Comfortaa", fontSize: 14}}}
-                    sx={{ maxWidth: "593px" }}
-              />
-            </div>
+          <div className='div-text-field'>
+              <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              InputLabelProps={{style: {fontFamily: "Comfortaa", fontSize: 14}}}
+              sx={{ maxWidth: "593px"}}
+              InputProps={{ className: classes.input }}
+            />
+          </div>
+          <div className='div-text-field'>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Senha"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              InputLabelProps={{style: {fontFamily: "Comfortaa", fontSize: 14}}}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              sx={{ maxWidth: "593px" }}
+              InputProps={{ className: classes.input }}
+            />
+          </div>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={loading}
+            onClick={(e) => handleSubmit(e)}
+          >
+            Sign In
+          </Button>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={loading}
+            onClick={(e) => handleLogout(e)}
+          >
+            Logout
+          </Button>
+
         </form>  
         
       </Box>
