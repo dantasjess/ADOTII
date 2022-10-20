@@ -29,7 +29,7 @@ export default function SignIn() {
     setError("");
     setLoading(true);
     await login(email, password);
-    //router.push("/");
+    router.push("/pet-list");
 
 
     setLoading(false);

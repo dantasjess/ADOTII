@@ -9,8 +9,10 @@ import Link from 'next/link';
 import CreatePet from '../src/components/crud-components/CreatePet';
 import { database, onValue, child, ref } from '../src/firebase';
 import { useState, useEffect } from 'react';
+import { useAuth } from '../src/contexts/AuthContext';
 
 export default function PetList() {
+  const { currentUser } = useAuth();
   const [pets, setPets] = useState([]);
   useEffect(() => {
     const petsRef = ref(database, 'pets/');
@@ -25,14 +27,14 @@ export default function PetList() {
     });
   }, []);
 
-  return (
+  return currentUser ? (
     <>
       <section className='section'>
         <TitleSection text='Administração dos Gatos'/>
         <CreatePet />
         {pets.map((pet) => {
           return (
-            <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} />
+            <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
           );
         })}
 
@@ -40,5 +42,5 @@ export default function PetList() {
       </section>
       
     </>
-  );
+  ) : <Typography>Acesso Negado</Typography>
 }
