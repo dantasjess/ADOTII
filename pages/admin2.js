@@ -61,7 +61,7 @@ export default function SignIn() {
       >
         <Typography align="center" sx={{ fontFamily: 'Comfortaa', fontSize: 42, color: '#193987', marginTop: "5%"}}>Acesso</Typography>
 
-        <form style={{ marginTop: "5%" }}>
+        <form style={{ marginTop: "5%"}}>
           <div className='div-text-field'>
               <TextField
               margin="normal"
@@ -97,27 +97,31 @@ export default function SignIn() {
             />
           </div>
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            disabled={loading}
-            onClick={(e) => handleSubmit(e)}
-          >
-            Sign In
-          </Button>
+          <div style={{ textAlign: "center", marginTop: 30 }}>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, maxWidth: 200}}
+              disabled={loading}
+              onClick={(e) => handleSubmit(e)}
+            >
+              Entrar
+            </Button>
+          </div>
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            disabled={loading}
-            onClick={(e) => handleLogout(e)}
-          >
-            Logout
-          </Button>
+          <div style={{ textAlign: "center" }}>
+            <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 1, mb: 2, maxWidth: 200}}
+                disabled={loading}
+                onClick={(e) => handleLogout(e)}
+              >
+                Sair
+              </Button>
+            </div>
 
         </form>  
         
