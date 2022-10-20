@@ -10,11 +10,16 @@ import Grid from '@mui/material/Grid';
 import DeletePet from './crud-components/DeletePet';
 import EditPet from './crud-components/EditPet';
 
-export default function MediaCard({ name, desc, id, pet }) {
+export default function MediaCard({ name, desc, id, pet, logged }) {
   return (
     <Card sx={{ maxWidth: 200, boxShadow: 0, margin: "0 25px", background: "#ECFEFF" }}>
-      <EditPet id={id} pet={pet} />
-      <DeletePet id={id} />
+      {logged ? (
+        <>
+          <EditPet id={id} pet={pet} />
+          <DeletePet id={id} />
+        </>
+      ) : null }
+      
       
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item>

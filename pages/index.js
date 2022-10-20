@@ -5,13 +5,34 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+import { database, onValue, child, ref } from '../src/firebase';
+import { useState, useEffect } from 'react';
+import { useAuth } from '../src/contexts/AuthContext';
 
 export default function Home() {
+  const { currentUser } = useAuth();
+  const [pets, setPets] = useState([]);
+  useEffect(() => {
+    const petsRef = ref(database, 'pets/');
+    onValue(petsRef, (snapshot) => {
+        let snap = [];
+        snapshot.forEach((child) => {
+            var pet = child.val();
+            pet.id = child.key;
+            snap.push(pet);
+        });
+        setPets(snap);
+    });
+  }, []);
   return (
     <>
       <section className='section'>
         <TitleSection text='Conheça nossos gatinhos'/>
-        <Card />
+        {pets.map((pet) => {
+          return (
+            <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
+          );
+        })}
         <Grid container direction="column" justifyContent="center" alignItems="center">
           <Button variant="contained" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 18, padding: "0.2% 20px 0.2% 20px", textTransform: 'none',  borderRadius: "12px", margin: "20px 0px 80px 0px"}}><Link href={"/gatos"}>Ver mais</Link></Button>
         </Grid>
