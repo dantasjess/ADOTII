@@ -142,9 +142,9 @@ export default function CreatePet() {
 
     return (
         <>
-            <IconButton aria-label="criar" onClick={handleClickOpen}>
-                <AddIcon />
-            </IconButton>
+            <Button variant="contained" startIcon={<AddIcon />} onClick={handleClickOpen}>
+              Cadastrar novo
+            </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Cadastrar Pet</DialogTitle>
                 <DialogContent>

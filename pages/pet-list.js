@@ -30,8 +30,16 @@ export default function PetList() {
   return currentUser ? (
     <>
       <section className='section'>
-        <TitleSection text='Administração dos Gatos'/>
-        <CreatePet />
+
+        <Grid container alignItems="center">
+          <Grid>
+            <TitleSection text='Gatos cadastrados'/>
+          </Grid>
+          <Grid sx={{ marginLeft: "auto"}}>
+            <CreatePet />
+          </Grid>
+        </Grid> 
+
         <Grid container direction="row">
           {pets.map((pet) => {
             return (
