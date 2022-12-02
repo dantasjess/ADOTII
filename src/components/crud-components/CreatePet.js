@@ -143,7 +143,7 @@ export default function CreatePet() {
     return (
         <>
             <Button variant="contained" startIcon={<AddIcon />} onClick={handleClickOpen}>
-              Cadastrar novo
+              Adicionar novo
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Cadastrar Pet</DialogTitle>

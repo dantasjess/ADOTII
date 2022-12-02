@@ -10,13 +10,37 @@ import { IconButton } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import Grid from '@mui/material/Grid';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
-import { database, set, ref } from '../../firebase';
+import { useState, useEffect } from 'react';
+import { database, set, ref, storage} from '../../firebase';
+import {
+    ref as refStorage,
+    getDownloadURL,
+    list
+  } from "firebase/storage";
 import { RadioButtonsGroupCastration, RadioButtonsGroupGender, SelectSize } from './CreatePet';
 import DeletePet from './DeletePet';
 
 
 export default function EditPet({ id, pet }) {
+    // Carregar imagem
+    const [imgUrl, setImgUrl] = useState();
+
+    useEffect(() => {
+      const func = async () => {
+          const imgRef = refStorage(storage, `images/${id}/`);
+          const firstPage = await list(imgRef, { maxResults: 1 }).then((response) => {
+              response.items.forEach((item) => {
+                  getDownloadURL(item).then((url) => {
+                      setImgUrl(url);
+                  });
+              });
+          });
+          
+      }
+  
+      if (imgUrl == undefined) {func()};
+    }, []);
+
     const [open, setOpen] = React.useState(false);
     const [name, setName] = useState(pet.name);
     const [gender, setGender] = useState(pet.gender);
@@ -109,30 +133,37 @@ export default function EditPet({ id, pet }) {
     return (
         <>
             <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, width: 120, textTransform: 'none', borderRadius: "12px"}}>Editar</Button>
-            <Dialog open={open} onClose={handleClose} xs={10}>
-                <Grid container alignItems="center">
-                    <Grid>
-                        <DialogTitle>Editar Pet</DialogTitle>
+            <Dialog open={open} onClose={handleClose} fullWidth="md" maxWidth="md"> 
+                <Grid container direction="row" justifyContent="center" alignItems="flex-start">
+                    <Grid item xs={5}>
+                        <img src={imgUrl} style={{width: "380px", height: "100%", objectFit: "cover", position:"absolute"}}/>
                     </Grid>
-                    <Grid sx={{ marginLeft: "auto"}} xs={1}>
-                        <IconButton onClick={handleClose}><CloseIcon /></IconButton>
-                    </Grid>
-                </Grid> 
-                <DialogContent>
-                    <DialogContentText>Edite as informações necessárias do pet:</DialogContentText>
-                    <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" label="Nome" type="text" fullWidth variant="standard" defaultValue={pet.name} />
-                    <RadioButtonsGroupGender changeGender={changeGender} gender={gender} defaultGender={pet.gender} />
-                    <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" label="Idade" type="number" fullWidth variant="standard" defaultValue={pet.age} />
-                    <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} defaultCastration={pet.castrated} />
-                    <SelectSize changeSize={changeSize} defaultSize={pet.size} />
-                    <TextField onChange={(e) => setVaccine(e.target.value)} margin="dense" id="vaccines" label="Vacinas" type="text" fullWidth variant="standard" defaultValue={pet.vaccine} />
-                    <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" label="Descrição" type="text" fullWidth variant="standard" defaultValue={pet.description} />
+                    <Grid item xs>
+                            <Grid container alignItems="center">
+                                <Grid>
+                                    <DialogTitle>Editar Pet</DialogTitle>
+                                </Grid>
+                                <Grid sx={{ marginLeft: "auto"}} xs={1}>
+                                    <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+                                </Grid>
+                            </Grid> 
+                            <DialogContent>
+                                <DialogContentText>Edite as informações necessárias do pet:</DialogContentText>
+                                <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" label="Nome" type="text" fullWidth variant="standard" defaultValue={pet.name} />
+                                <RadioButtonsGroupGender changeGender={changeGender} gender={gender} defaultGender={pet.gender} />
+                                <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" label="Idade" type="number" fullWidth variant="standard" defaultValue={pet.age} />
+                                <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} defaultCastration={pet.castrated} />
+                                <SelectSize changeSize={changeSize} defaultSize={pet.size} />
+                                <TextField onChange={(e) => setVaccine(e.target.value)} margin="dense" id="vaccines" label="Vacinas" type="text" fullWidth variant="standard" defaultValue={pet.vaccine} />
+                                <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" label="Descrição" type="text" fullWidth variant="standard" defaultValue={pet.description} />
 
-                </DialogContent>
-                <DialogActions sx={{paddingRight: 3}}>
-                    <Button variant="contained" startIcon={<SaveIcon />} onClick={handleSubmit}>Salvar alterações</Button>
-                    <DeletePet id={id} />
-                </DialogActions>
+                            </DialogContent>
+                            <DialogActions sx={{paddingRight: 3}}>
+                                <Button variant="contained" startIcon={<SaveIcon />} onClick={handleSubmit}>Salvar alterações</Button>
+                                <DeletePet id={id} />
+                            </DialogActions>
+                    </Grid>
+                </Grid>
             </Dialog>
         </>
     );
