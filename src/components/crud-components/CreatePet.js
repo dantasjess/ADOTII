@@ -8,17 +8,21 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FormControl } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { database, set, child, ref, push } from '../../firebase';
+import { database, set, child, ref, push, storage } from '../../firebase';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
+import {
+  ref as refStorage,
+  uploadBytes
+} from "firebase/storage";
 
 export function SelectSize({ changeSize, defaultSize }) {
   const [size, setSize] = useState('');
@@ -34,9 +38,9 @@ export function SelectSize({ changeSize, defaultSize }) {
           defaultValue={defaultSize}
           onChange={(e) => changeSize(e.target.value)}
         >
-          <MenuItem value='small'>Pequeno</MenuItem>
-          <MenuItem value='medium'>Médio</MenuItem>
-          <MenuItem value='large'>Grande</MenuItem>
+          <MenuItem value='Pequeno'>Pequeno</MenuItem>
+          <MenuItem value='Médio'>Médio</MenuItem>
+          <MenuItem value='Grande'>Grande</MenuItem>
         </Select>
       </FormControl>
     </Box>
@@ -54,8 +58,8 @@ export function RadioButtonsGroupGender({ changeGender, gender, defaultGender })
         defaultValue={defaultGender}
         onChange={(e) => { changeGender(e.target.value) }}
       >
-        <FormControlLabel value="female" control={<Radio />} label="Fêmea" />
-        <FormControlLabel value="male" control={<Radio />} label="Macho" />
+        <FormControlLabel value="Fêmea" control={<Radio />} label="Fêmea" />
+        <FormControlLabel value="Macho" control={<Radio />} label="Macho" />
       </RadioGroup>
     </FormControl>
   );
@@ -72,8 +76,8 @@ export function RadioButtonsGroupCastration({ changeCastrated, castrated, defaul
           defaultValue={defaultCastration}
           onChange={(e) => changeCastrated(e.target.value)}
         >
-          <FormControlLabel value="yes" control={<Radio />} label="Sim" />
-          <FormControlLabel value="no" control={<Radio />} label="Não" />
+          <FormControlLabel value="Sim" control={<Radio />} label="Sim" />
+          <FormControlLabel value="Não" control={<Radio />} label="Não" />
         </RadioGroup>
       </FormControl>
     );
@@ -88,9 +92,17 @@ export default function CreatePet() {
     const [size, setSize] = useState();
     const [vaccine, setVaccine] = useState();
     const [description, setDescription] = useState();
+    const [imageUpload, setImageUpload] = useState(null);
+
+    const uploadFile = (catID) => {
+      if (imageUpload == null) return;
+      const imageRef = refStorage(storage, `images/${catID}/${imageUpload.name}`);
+      uploadBytes(imageRef, imageUpload);
+    };
 
     function writePetData(pet) {
-        set(push(ref(database, 'pets/')), pet);
+      let newref = push(ref(database, 'pets/'));
+      set(newref, pet).then(uploadFile(newref.key));
     }
 
     const handleClickOpen = () => {
@@ -150,6 +162,12 @@ export default function CreatePet() {
                     <Button onClick={handleClose}>Cancelar</Button>
                     <Button onClick={handleSubmit}>Criar</Button>
                 </DialogActions>
+                <input
+                  type="file"
+                  onChange={(event) => {
+                    setImageUpload(event.target.files[0]);
+                  }}
+                />
             </Dialog>
         </>
     );
