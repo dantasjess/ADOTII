@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 import { getDatabase, ref, onValue, set, get, child, remove, push } from 'firebase/database';
 
@@ -19,7 +20,7 @@ const firebaseConfig = {
 
   projectId: "adotii",
 
-  storageBucket: "adotii.appspot.com",
+  storageBucket: "gs://adotii.appspot.com",
 
   messagingSenderId: "794809179574",
 
@@ -38,5 +39,10 @@ const auth = getAuth(app);
 
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app);
-export { auth, database, ref, onValue, set, get, child, remove, push };
+
+// Initialize Cloud Storage and get a reference to the service
+const storage = getStorage(app);
+
+export { auth, storage, database, ref, onValue, set, get, child, remove, push };
 export default app;
+
