@@ -2,15 +2,39 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Avatar } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import DeletePet from './crud-components/DeletePet';
 import EditPet from './crud-components/EditPet';
+import { useState, useEffect } from 'react';
+import { storage } from '../firebase';
+import {
+  ref as refStorage,
+  getDownloadURL,
+  list
+} from "firebase/storage";
+import DetailPet from './crud-components/DetailPet';
 
 export default function MediaCard({ name, desc, id, pet, logged }) {
+  const [imgUrl, setImgUrl] = useState();
+
+  useEffect(() => {
+    const func = async () => {
+        const imgRef = refStorage(storage, `images/${id}/`);
+        const firstPage = await list(imgRef, { maxResults: 1 }).then((response) => {
+            response.items.forEach((item) => {
+                getDownloadURL(item).then((url) => {
+                    setImgUrl(url);
+                });
+            });
+        });
+        
+    }
+
+    if (imgUrl == undefined) {func()};
+  }, []);
+
   return (
     <Card sx={{ maxWidth: 200, boxShadow: 0, margin: "0 25px", background: "#ECFEFF" }}>
       {logged ? (
@@ -20,10 +44,9 @@ export default function MediaCard({ name, desc, id, pet, logged }) {
         </>
       ) : null }
       
-      
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item>
-            <Avatar sx={{height: 150, width: 150 }} src="https://www.petz.com.br/blog/wp-content/uploads/2020/08/cat-sitter-felino-1280x720.jpg" />
+            <Avatar sx={{height: 150, width: 150 }} src={imgUrl} />
         </Grid>
 
         <Grid item sx={{textAlign: "center", paddingTop: "10px"}} >
@@ -39,7 +62,7 @@ export default function MediaCard({ name, desc, id, pet, logged }) {
         
         <Grid item>
           <CardActions>
-                  <Button variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, padding: "2px 20px 2px 20px", textTransform: 'none', borderRadius: "12px"}}>Detalhes</Button>
+                  <DetailPet id={id} pet={pet} />
           </CardActions>
         </Grid>
         </Grid>
