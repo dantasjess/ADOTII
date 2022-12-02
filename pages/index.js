@@ -21,7 +21,8 @@ export default function Home() {
             pet.id = child.key;
             snap.push(pet);
         });
-        setPets(snap);
+        if (snap.length >= 6) setPets(snap.slice(0, 5));
+        else (setPets(snap));
     });
   }, []);
   return (
