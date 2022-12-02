@@ -35,8 +35,8 @@ export default function PetList() {
         <Grid container direction="row">
           {pets.map((pet) => {
             return (
-              <Grid item>
-                <Card key={pet.id} name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
+              <Grid item key={pet.id}>
+                <Card name={pet.name} desc={pet.description} id={pet.id} pet={pet} logged={currentUser} />
               </Grid>
             );
           })}
