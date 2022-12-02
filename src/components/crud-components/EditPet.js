@@ -9,16 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
-import { FormControl } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { database, set, child, ref, push } from '../../firebase';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import Box from '@mui/material/Box';
+import { database, set, ref } from '../../firebase';
 import { RadioButtonsGroupCastration, RadioButtonsGroupGender, SelectSize } from './CreatePet';
 
 
