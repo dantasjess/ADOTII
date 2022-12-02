@@ -18,6 +18,7 @@ import DetailPet from './crud-components/DetailPet';
 
 export default function MediaCard({ name, desc, id, pet, logged }) {
   const [imgUrl, setImgUrl] = useState();
+  const endereçoAtual = document.location.pathname;
 
   useEffect(() => {
     const func = async () => {
@@ -37,13 +38,6 @@ export default function MediaCard({ name, desc, id, pet, logged }) {
 
   return (
     <Card sx={{ maxWidth: 200, boxShadow: 0, margin: "0 25px", background: "#ECFEFF" }}>
-      {logged ? (
-        <>
-          <EditPet id={id} pet={pet} />
-          <DeletePet id={id} />
-        </>
-      ) : null }
-      
       <Grid container direction="column" justifyContent="center" alignItems="center">
         <Grid item>
             <Avatar sx={{height: 150, width: 150 }} src={imgUrl} />
@@ -54,15 +48,20 @@ export default function MediaCard({ name, desc, id, pet, logged }) {
                 <Typography variant="h6" component="div" sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder", color: "#EC7E31"}}>
                 {name}
                 </Typography>
-                <Typography variant = "body2" sx={{ fontFamily: 'Comfortaa', color: "#09237D"}}>
-                {desc}
-                </Typography>
+                {!logged ? (
+                  <Typography variant = "body2" sx={{ fontFamily: 'Comfortaa', color: "#09237D"}}>{desc}</Typography>
+                ) : null }
             </CardContent>
         </Grid>
         
         <Grid item>
           <CardActions>
-                  <DetailPet id={id} pet={pet} />
+          {/* Se o endereço for "/pet-list", então ele está na página de PETs do Admin.. Portanto, coloque o botão de detalhes. Se não, botão de editar. */}
+          {(endereçoAtual == '/pet-list') ? (
+            <EditPet id={id} pet={pet} />
+          ) : (
+            <DetailPet id={id} pet={pet} />
+          )}
           </CardActions>
         </Grid>
         </Grid>

@@ -7,10 +7,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { IconButton } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
+import Grid from '@mui/material/Grid';
+import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { database, set, ref } from '../../firebase';
 import { RadioButtonsGroupCastration, RadioButtonsGroupGender, SelectSize } from './CreatePet';
+import DeletePet from './DeletePet';
 
 
 export default function EditPet({ id, pet }) {
@@ -105,11 +108,16 @@ export default function EditPet({ id, pet }) {
 
     return (
         <>
-            <IconButton aria-label="editar" onClick={handleClickOpen}>
-                <EditIcon />
-            </IconButton>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Editar Pet</DialogTitle>
+            <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, width: 120, textTransform: 'none', borderRadius: "12px"}}>Editar</Button>
+            <Dialog open={open} onClose={handleClose} xs={10}>
+                <Grid container alignItems="center">
+                    <Grid>
+                        <DialogTitle>Editar Pet</DialogTitle>
+                    </Grid>
+                    <Grid sx={{ marginLeft: "auto"}} xs={1}>
+                        <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+                    </Grid>
+                </Grid> 
                 <DialogContent>
                     <DialogContentText>Edite as informações necessárias do pet:</DialogContentText>
                     <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" label="Nome" type="text" fullWidth variant="standard" defaultValue={pet.name} />
@@ -121,9 +129,9 @@ export default function EditPet({ id, pet }) {
                     <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" label="Descrição" type="text" fullWidth variant="standard" defaultValue={pet.description} />
 
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancelar</Button>
-                    <Button onClick={handleSubmit}>Editar</Button>
+                <DialogActions sx={{paddingRight: 3}}>
+                    <Button variant="contained" startIcon={<SaveIcon />} onClick={handleSubmit}>Salvar alterações</Button>
+                    <DeletePet id={id} />
                 </DialogActions>
             </Dialog>
         </>

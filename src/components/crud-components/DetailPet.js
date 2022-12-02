@@ -46,7 +46,7 @@ export default function DetailPet({ id, pet }) {
 
     return (
         <>
-            <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, padding: "2px 20px 2px 20px", textTransform: 'none', borderRadius: "12px"}}>Detalhes</Button>
+            <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, width: 120, textTransform: 'none', borderRadius: "12px"}}>Detalhes</Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>{pet.name}</DialogTitle>
                 <DialogContent>
