@@ -10,6 +10,7 @@ import { IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useState, useEffect } from 'react';
 import { FormControl } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -28,13 +29,11 @@ export function SelectSize({ changeSize, defaultSize }) {
   const [size, setSize] = useState('');
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 240 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Porte</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          label="Porte"
           defaultValue={defaultSize}
           onChange={(e) => changeSize(e.target.value)}
         >
@@ -49,8 +48,9 @@ export function SelectSize({ changeSize, defaultSize }) {
 
 export function RadioButtonsGroupGender({ changeGender, gender, defaultGender }) {
   return (
-    <FormControl sx={{margin:"0.2px 5px 0.2px 5px"}}>
-      <FormLabel id="demo-radio-buttons-group-label">Sexo</FormLabel>
+    <Box sx={{minWidth:100}}>
+    <FormControl fullWidth sx={{margin:"0.2px 5px 0.2px 5px"}}>
+      <FormLabel sx={{fontSize:"15px"}} id="demo-radio-buttons-group-label">Sexo</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         name="radio-buttons-group"
@@ -62,24 +62,25 @@ export function RadioButtonsGroupGender({ changeGender, gender, defaultGender })
         <FormControlLabel value="Macho" control={<Radio />} label="Macho" />
       </RadioGroup>
     </FormControl>
+    </Box>
   );
 }
 
 export function RadioButtonsGroupCastration({ changeCastrated, castrated, defaultCastration }) {
     return (
-      <FormControl sx={{margin:"0.2px 5px 0.2px 5px"}}>
-        <FormLabel id="demo-radio-buttons-group-label">Castrado?</FormLabel>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          name="radio-buttons-group"
-          value={castrated}
-          defaultValue={defaultCastration}
-          onChange={(e) => changeCastrated(e.target.value)}
-        >
-          <FormControlLabel value="Sim" control={<Radio />} label="Sim" />
-          <FormControlLabel value="Não" control={<Radio />} label="Não" />
-        </RadioGroup>
-      </FormControl>
+        <FormControl sx={{margin:"0.2px 5px 0.2px 5px"}}>
+          <FormLabel sx={{fontSize:"15px"}} id="demo-radio-buttons-group-label">Castrado?</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            name="radio-buttons-group"
+            value={castrated}
+            defaultValue={defaultCastration}
+            onChange={(e) => changeCastrated(e.target.value)}
+          >
+            <FormControlLabel value="Sim" control={<Radio />} label="Sim" />
+            <FormControlLabel value="Não" control={<Radio />} label="Não" />
+          </RadioGroup>
+        </FormControl>
     );
   }
 
