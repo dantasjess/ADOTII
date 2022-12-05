@@ -27,7 +27,7 @@ export default function DeletePet({ id }) {
 
     return (
         <>
-            <Button variant="contained" color="error" onClick={handleClickOpen} startIcon={<DeleteIcon />}>Deletar</Button>
+            <Button variant="contained" color="error" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none'}} onClick={handleClickOpen} startIcon={<DeleteIcon />}>Deletar</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
                 <DialogTitle id="alert-dialog-title">{'DELETAR'}</DialogTitle>
                 <DialogContent>

@@ -49,7 +49,7 @@ export function SelectSize({ changeSize, defaultSize }) {
 
 export function RadioButtonsGroupGender({ changeGender, gender, defaultGender }) {
   return (
-    <FormControl>
+    <FormControl sx={{margin:"0.2px 5px 0.2px 5px"}}>
       <FormLabel id="demo-radio-buttons-group-label">Sexo</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
@@ -67,7 +67,7 @@ export function RadioButtonsGroupGender({ changeGender, gender, defaultGender })
 
 export function RadioButtonsGroupCastration({ changeCastrated, castrated, defaultCastration }) {
     return (
-      <FormControl>
+      <FormControl sx={{margin:"0.2px 5px 0.2px 5px"}}>
         <FormLabel id="demo-radio-buttons-group-label">Castrado?</FormLabel>
         <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"
@@ -142,7 +142,7 @@ export default function CreatePet() {
 
     return (
         <>
-            <Button variant="contained" startIcon={<AddIcon />} onClick={handleClickOpen}>
+            <Button variant="contained" sx={{backgroundColor: "#09237D", fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none',  borderRadius: "12px", margin: "20px 0px 80px 0px"}} startIcon={<AddIcon />} onClick={handleClickOpen}>
               Adicionar novo
             </Button>
             <Dialog open={open} onClose={handleClose}>

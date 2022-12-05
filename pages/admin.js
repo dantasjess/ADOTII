@@ -98,12 +98,12 @@ export default function SignIn() {
             />
           </div>
 
-          <div style={{ textAlign: "center", marginTop: 30 }}>
+          <div style={{ textAlign: "center", marginTop: 30}}>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, maxWidth: 200}}
+              sx={{ mt: 3, mb: 2, maxWidth: 200, backgroundColor: "#EC7E31", fontFamily: "Comfortaa", textTransform: 'none', fontSize: 18, borderRadius: "12px"}}
               disabled={loading}
               onClick={(e) => handleSubmit(e)}
             >
@@ -116,7 +116,7 @@ export default function SignIn() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 1, mb: 2, maxWidth: 200}}
+                sx={{ mt: 1, mb: 2, maxWidth: 200, backgroundColor: "#EC7E31", fontFamily: "Comfortaa", textTransform: 'none', fontSize: 18, borderRadius: "12px"}}
                 disabled={loading}
                 onClick={(e) => handleLogout(e)}
               >

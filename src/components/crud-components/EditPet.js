@@ -19,6 +19,7 @@ import {
   } from "firebase/storage";
 import { RadioButtonsGroupCastration, RadioButtonsGroupGender, SelectSize } from './CreatePet';
 import DeletePet from './DeletePet';
+import { Typography } from '@mui/material';
 
 
 export default function EditPet({ id, pet }) {
@@ -132,34 +133,51 @@ export default function EditPet({ id, pet }) {
 
     return (
         <>
-            <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 15, width: 120, textTransform: 'none', borderRadius: "12px"}}>Editar</Button>
-            <Dialog open={open} onClose={handleClose} fullWidth="md" maxWidth="md"> 
-                <Grid container direction="row" justifyContent="center" alignItems="flex-start">
+            <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 18, width: 120, textTransform: 'none', borderRadius: "12px"}}>Editar</Button>
+            <Dialog open={open} onClose={handleClose} fullWidth="md" maxWidth="md" > 
+                <Grid container direction="row" justifyContent="center" alignItems="flex-start" sx={{marginBottom:"2px"}}>
                     <Grid item xs={5}>
                         <img src={imgUrl} style={{width: "380px", height: "100%", objectFit: "cover", position:"absolute"}}/>
                     </Grid>
                     <Grid item xs>
                             <Grid container alignItems="center">
                                 <Grid>
-                                    <DialogTitle>Editar Pet</DialogTitle>
+                                    <DialogTitle sx={{marginBottom:"0.2px"}}>Editar Pet</DialogTitle>
                                 </Grid>
                                 <Grid sx={{ marginLeft: "auto"}} xs={1}>
                                     <IconButton onClick={handleClose}><CloseIcon /></IconButton>
                                 </Grid>
                             </Grid> 
                             <DialogContent>
-                                <DialogContentText>Edite as informações necessárias do pet:</DialogContentText>
-                                <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" label="Nome" type="text" fullWidth variant="standard" defaultValue={pet.name} />
-                                <RadioButtonsGroupGender changeGender={changeGender} gender={gender} defaultGender={pet.gender} />
-                                <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" label="Idade" type="number" fullWidth variant="standard" defaultValue={pet.age} />
-                                <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} defaultCastration={pet.castrated} />
+                                <DialogContentText sx={{marginLeft:"5px", color:"#808080", fontSize:"15px"}}>Edite as informações necessárias do pet:</DialogContentText>
+                                
+
+                                <DialogContentText sx={{marginLeft:"5px", color:"#808080", fontSize:"15px"}}>Nome:</DialogContentText>
+                                <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" type="text" fullWidth variant="outlined" sx={{margin:"0.2px 5px 0.2px 5px"}} defaultValue={pet.name}/>
+                                
+
+                                <RadioButtonsGroupGender changeGender={changeGender} gender={gender} defaultGender={pet.gender} sx={{margin:"0.2px 5px 0.2px 5px"}}/>
+                                
+
+                                <DialogContentText sx={{marginLeft:"5px", color:"#808080", fontSize:"15px"}}>Idade:</DialogContentText>
+                                <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" type="number" fullWidth variant="outlined" defaultValue={pet.age} sx={{margin:"0.2px 5px 0.2px 5px"}} />
+                                
+
+                                <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} defaultCastration={pet.castrated} stile={{backgroundColor:"orange"}}/>
+                                
+
                                 <SelectSize changeSize={changeSize} defaultSize={pet.size} />
-                                <TextField onChange={(e) => setVaccine(e.target.value)} margin="dense" id="vaccines" label="Vacinas" type="text" fullWidth variant="standard" defaultValue={pet.vaccine} />
-                                <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" label="Descrição" type="text" fullWidth variant="standard" defaultValue={pet.description} />
+                                
+
+                                <DialogContentText sx={{marginLeft:"5px", color:"#808080", fontSize:"15px"}}>Vacinas:</DialogContentText>
+                                <TextField onChange={(e) => setVaccine(e.target.value)} margin="dense" sx={{margin:"1px 5px 10px 5px"}} id="vaccines" type="text" fullWidth variant="outlined" defaultValue={pet.vaccine} />
+                                
+                                <DialogContentText sx={{marginLeft:"5px", color:"#808080", fontSize:"15px"}}>Descrição:</DialogContentText>
+                                <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" type="text" sx={{margin:"0.2px 5px 0.2px 5px"}} fullWidth variant="outlined" defaultValue={pet.description} />
 
                             </DialogContent>
                             <DialogActions sx={{paddingRight: 3}}>
-                                <Button variant="contained" startIcon={<SaveIcon />} onClick={handleSubmit}>Salvar alterações</Button>
+                                <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none', backgroundColor: "#09237D"}} startIcon={<SaveIcon />} onClick={handleSubmit}>Salvar alterações</Button>
                                 <DeletePet id={id} />
                             </DialogActions>
                     </Grid>

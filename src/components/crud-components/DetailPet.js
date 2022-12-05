@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -81,8 +82,8 @@ export default function DetailPet({ id, pet }) {
                     </Card>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Fechar</Button>
-                    <Button>Adotar</Button>
+                    <Button onClick={handleClose} variant="contained"sx={{fontFamily: "Comfortaa", fontSize: 15, textTransform: 'none', backgroundColor: "#EC7E31"}}>Fechar</Button>
+                    <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 15, textTransform: 'none', backgroundColor: "#09237D"}}><Link href="https://docs.google.com/forms/d/e/1FAIpQLSfU5kVmut0bpIO8CXSBYNNsAbIV3xD_Id5M2041SJfavx0m5w/viewform">Adotar</Link></Button>
                 </DialogActions>
             </Dialog>
 
