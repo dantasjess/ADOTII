@@ -11,6 +11,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useState, useEffect } from 'react';
 import { FormControl } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import CloseIcon from '@mui/icons-material/Close';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -20,6 +21,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Box from '@mui/material/Box';
+import { Typography } from '@mui/material';
 import {
   ref as refStorage,
   uploadBytes
@@ -49,8 +51,8 @@ export function SelectSize({ changeSize, defaultSize }) {
 export function RadioButtonsGroupGender({ changeGender, gender, defaultGender }) {
   return (
     <Box sx={{minWidth:100}}>
-    <FormControl fullWidth sx={{margin:"0.2px 5px 0.2px 5px"}}>
-      <FormLabel sx={{fontSize:"15px"}} id="demo-radio-buttons-group-label">Sexo</FormLabel>
+    <FormControl fullWidth sx={{margin:"7px 5px 0.2px 5px"}}>
+      <FormLabel sx={{fontSize:"15px", fontFamily:"Comfortaa"}} id="demo-radio-buttons-group-label">Sexo</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         name="radio-buttons-group"
@@ -68,8 +70,8 @@ export function RadioButtonsGroupGender({ changeGender, gender, defaultGender })
 
 export function RadioButtonsGroupCastration({ changeCastrated, castrated, defaultCastration }) {
     return (
-        <FormControl sx={{margin:"0.2px 5px 0.2px 5px"}}>
-          <FormLabel sx={{fontSize:"15px"}} id="demo-radio-buttons-group-label">Castrado?</FormLabel>
+        <FormControl sx={{margin:"7px 5px 0.2px 5px"}}>
+          <FormLabel sx={{fontSize:"15px", fontFamily:"Comfortaa"}} id="demo-radio-buttons-group-label">Castrado?</FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
             name="radio-buttons-group"
@@ -142,34 +144,70 @@ export default function CreatePet() {
     };
 
     return (
-        <>
-            <Button variant="contained" sx={{backgroundColor: "#09237D", fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none',  borderRadius: "12px", margin: "20px 0px 80px 0px"}} startIcon={<AddIcon />} onClick={handleClickOpen}>
-              Adicionar novo
-            </Button>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Cadastrar Pet</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>Insira as informações necessárias para o cadastro do pet:</DialogContentText>
-                    <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" label="Nome" type="text" fullWidth variant="standard" />
-                    <RadioButtonsGroupGender changeGender={changeGender} gender={gender} />
-                    <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" label="Idade" type="number" fullWidth variant="standard" />
-                    <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} />
-                    <SelectSize changeSize={changeSize} />
-                    <TextField onChange={(e) => setVaccine(e.target.value)} margin="dense" id="vaccines" label="Vacinas" type="text" fullWidth variant="standard" />
-                    <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" label="Descrição" type="text" fullWidth variant="standard" />
+    <>
+        <Button variant="contained" sx={{backgroundColor: "#09237D", fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none',  borderRadius: "12px", margin: "20px 0px 80px 0px"}} startIcon={<AddIcon />} onClick={handleClickOpen}>
+          Adicionar novo
+        </Button>
+        <Dialog open={open} onClose={handleClose}>
+        <Box sx={{flexGrow:2}}>
+                <Grid container direction="row" justifyContent="center" alignItems="flex-start">
+                    <Grid item xs>
+                            <Grid container alignItems="center" sx={{marginBottom:"0.2px"}}>
+                                <Grid>
+                                  <DialogTitle sx={{color:"#817979", fontFamily:"Comfortaa"}}>Cadastrar Pet</DialogTitle>
+                                </Grid>
+                                <Grid sx={{ marginLeft: "auto"}} xs={1}>
+                                    <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+                                </Grid>
+                            </Grid> 
+                    </Grid>
+            <DialogContent>
+                <Grid item xs={6} sx={{display: "inline-block"}}>
+                <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Nome:</DialogContentText>
+                <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" type="text" fullWidth variant="outlined" sx={{margin:"0.2px 5px 0.2px 1px"}} />
+                </Grid>
+                
+                <Grid item xs={6} sx={{display: "inline-block", float:"right", fontFamily:"Comfortaa"}}>
+                <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Idade:</DialogContentText>
+                <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" type="number" fullWidth variant="outlined" sx={{margin:"0.2px 5px 0.2px 1px"}}/>
+                </Grid>
 
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancelar</Button>
-                    <Button onClick={handleSubmit}>Criar</Button>
-                </DialogActions>
-                <input
-                  type="file"
-                  onChange={(event) => {
-                    setImageUpload(event.target.files[0]);
-                  }}
-                />
-            </Dialog>
-        </>
-    );
+                <Grid sx={{display:"inline-block", marginLeft:"1px", fontFamily:"Comfortaa"}}>
+                <RadioButtonsGroupGender changeGender={changeGender} gender={gender} />
+                </Grid>
+                <Grid sx={{display:"inline-block",marginLeft:"40%"}}>
+                  <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} />
+                </Grid>
+
+                <Grid item xs={6} sx={{display:"inline-block"}}>
+                  <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Porte:</DialogContentText>
+                  <SelectSize changeSize={changeSize} />
+                </Grid>
+                <Grid item xs={6} sx={{display:"inline-block", float:"right"}}>
+                <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Vacinas:</DialogContentText>
+                <TextField multiline rows={2} onChange={(e) => setVaccine(e.target.value)} margin="dense" id="vaccines" type="text" fullWidth variant="outlined" sx={{margin:"1px 20px 10px 1px"}}/>
+                </Grid>
+
+                <Grid item xs>
+                <DialogContentText sx={{marginLeft:"1px", marginTop:"10px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Descrição:</DialogContentText>
+                <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" type="text" fullWidth variant="outlined" />
+                </Grid>
+            </DialogContent>
+            
+            <input
+              type="file"
+              onChange={(event) => {
+                setImageUpload(event.target.files[0]);
+              }}
+            />
+
+            <DialogActions sx={{paddingRight: 3}}>
+                <Button onClick={handleClose} variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none', backgroundColor: "red"}}>Cancelar</Button>
+                <Button onClick={handleSubmit} variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none', backgroundColor: "#09237D"}}>Criar</Button>
+            </DialogActions>
+                  </Grid>
+                </Box>
+              </Dialog>
+          </>
+      );
 }

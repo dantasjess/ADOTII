@@ -135,59 +135,59 @@ export default function EditPet({ id, pet }) {
 
     return (
         <>
-            <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 18, width: 120, textTransform: 'none', borderRadius: "12px"}}>Editar</Button>
-            <Dialog open={open} onClose={handleClose} fullWidth="md" maxWidth="md"> 
-                <Box sx={{flexGrow:2}}>
-                    <Grid container direction="row" justifyContent="center" alignItems="flex-start">
-                        <Grid item xs={5}>
-                            <img src={imgUrl} style={{width: "380px", height: "100%", objectFit: "cover", position:"absolute"}}/>
-                        </Grid>
-                        <Grid item xs>
-                                <Grid container alignItems="center" sx={{marginBottom:"0.2px"}}>
-                                    <Grid>
-                                        <DialogTitle sx={{color:"#817979"}}>Edite as informações necessárias:</DialogTitle>
-                                    </Grid>
-                                    <Grid sx={{ marginLeft: "auto"}} xs={1}>
-                                        <IconButton onClick={handleClose}><CloseIcon /></IconButton>
-                                    </Grid>
-                                </Grid> 
-                                <DialogContent>   
-                                    <Grid item xs={6} sx={{display: "inline-block"}}>
-                                        <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px"}}>Nome:</DialogContentText>
-                                        <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" type="text" fullWidth variant="outlined" sx={{margin:"0.2px 5px 0.2px 1px"}} defaultValue={pet.name}/>
-                                    </Grid>
-                                    <Grid item xs={6} sx={{display: "inline-block", float:"right"}}>
-                                        <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px"}}>Idade:</DialogContentText>
-                                        <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" type="number" fullWidth variant="outlined" defaultValue={pet.age} sx={{margin:"0.2px 5px 0.2px 1px"}} />
-                                    </Grid>
-                                    <Grid sx={{display:"inline-block", marginLeft:"1px"}}>
-                                        <RadioButtonsGroupGender changeGender={changeGender} gender={gender} defaultGender={pet.gender} sx={{margin:"0.2px 5px 0.2px 1px"}}/>
-                                    </Grid>
-                                    <Grid sx={{display:"inline-block",marginLeft:"140px"}}>
-                                        <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} defaultCastration={pet.castrated} stile={{backgroundColor:"orange"}}/>
-                                    </Grid>
-                                    <Grid item xs={6} sx={{display:"inline-block"}}>
-                                        <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px"}}>Porte:</DialogContentText>
-                                        <SelectSize changeSize={changeSize} defaultSize={pet.size} />
-                                    </Grid> 
-                                    <Grid item xs={6} sx={{display:"inline-block", float:"right"}}>
-                                        <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px"}}>Vacinas:</DialogContentText>
-                                        <TextField multiline rows={2} onChange={(e) => setVaccine(e.target.value)} margin="dense" sx={{margin:"1px 20px 10px 1px"}} id="vaccines" type="text" fullWidth variant="outlined" defaultValue={pet.vaccine} />
-                                    </Grid> 
-                                    <Grid item xs>
-                                        <DialogContentText sx={{marginLeft:"1px", marginTop:"10px", color:"#817979", fontSize:"15px"}}>Descrição:</DialogContentText>
-                                        <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" type="text" sx={{margin:"0.2px 5px 0.2px 1px"}} fullWidth variant="outlined" defaultValue={pet.description} />
-                                    </Grid>
-                                </DialogContent>
-
-                            <DialogActions sx={{paddingRight: 3}}>
-                                <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none', backgroundColor: "#09237D"}} startIcon={<SaveIcon />} onClick={handleSubmit}>Salvar alterações</Button>
-                                <DeletePet id={id} />
-                            </DialogActions>
-                        </Grid>
+    <Button onClick={handleClickOpen} variant="contained" size="small" sx={{backgroundColor: "#EC7E31", fontFamily: "Comfortaa", fontSize: 18, width: 120, textTransform: 'none', borderRadius: "12px"}}>Editar</Button>
+    <Dialog open={open} onClose={handleClose} fullWidth="md" maxWidth="md"> 
+    <Box sx={{flexGrow:2}}>
+        <Grid container direction="row" justifyContent="center" alignItems="flex-start">
+            <Grid item xs={5}>
+                <img src={imgUrl} style={{width: "380px", height: "100%", objectFit: "cover", position:"absolute"}}/>
+            </Grid>
+            <Grid item xs>
+                <Grid container alignItems="center" sx={{marginBottom:"0.2px"}}>
+                    <Grid>
+                        <DialogTitle sx={{color:"#817979", fontFamily:"Comfortaa"}}>Edite as informações necessárias:</DialogTitle>
                     </Grid>
-                </Box>
-            </Dialog> 
-        </>
+                    <Grid sx={{ marginLeft: "auto"}} xs={1}>
+                        <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+                    </Grid>
+            </Grid> 
+            <DialogContent>   
+                <Grid item xs={6} sx={{display: "inline-block"}}>
+                    <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Nome:</DialogContentText>
+                    <TextField onChange={(e) => setName(e.target.value)} margin="dense" id="name" type="text" fullWidth variant="outlined" sx={{margin:"0.2px 5px 0.2px 1px"}} defaultValue={pet.name}/>
+                </Grid>
+                <Grid item xs={6} sx={{display: "inline-block", float:"right", fontFamily:"Comfortaa"}}>
+                    <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Idade:</DialogContentText>
+                    <TextField onChange={(e) => setAge(e.target.value)} margin="dense" id="age" type="number" fullWidth variant="outlined" defaultValue={pet.age} sx={{margin:"0.2px 5px 0.2px 1px"}} />
+                </Grid>
+                <Grid sx={{display:"inline-block", marginLeft:"1px", fontFamily:"Comfortaa"}}>
+                    <RadioButtonsGroupGender changeGender={changeGender} gender={gender} defaultGender={pet.gender} sx={{margin:"0.2px 5px 0.2px 1px"}}/>
+                </Grid>
+                <Grid sx={{display:"inline-block",marginLeft:"140px"}}>
+                    <RadioButtonsGroupCastration changeCastrated={changeCastrated} castrated={castrated} defaultCastration={pet.castrated} stile={{backgroundColor:"orange"}}/>
+                </Grid>
+                <Grid item xs={6} sx={{display:"inline-block"}}>
+                    <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Porte:</DialogContentText>
+                    <SelectSize changeSize={changeSize} defaultSize={pet.size} />
+                </Grid> 
+                <Grid item xs={6} sx={{display:"inline-block", float:"right"}}>
+                    <DialogContentText sx={{marginLeft:"1px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Vacinas:</DialogContentText>
+                    <TextField multiline rows={2} onChange={(e) => setVaccine(e.target.value)} margin="dense" sx={{margin:"1px 20px 10px 1px"}} id="vaccines" type="text" fullWidth variant="outlined" defaultValue={pet.vaccine} />
+                </Grid> 
+                <Grid item xs>
+                    <DialogContentText sx={{marginLeft:"1px", marginTop:"10px", color:"#817979", fontSize:"15px", fontFamily:"Comfortaa"}}>Descrição:</DialogContentText>
+                    <TextField onChange={(e) => setDescription(e.target.value)} multiline rows={4} margin="dense" id="desc" type="text" sx={{margin:"0.2px 5px 0.2px 1px"}} fullWidth variant="outlined" defaultValue={pet.description} />
+                </Grid>
+            </DialogContent>
+
+                <DialogActions sx={{paddingRight: 3}}>
+                    <DeletePet id={id} />
+                    <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none', backgroundColor: "#09237D"}} startIcon={<SaveIcon />} onClick={handleSubmit}>Salvar alterações</Button>
+                </DialogActions>
+            </Grid>
+        </Grid>
+    </Box>
+    </Dialog> 
+    </>
     );
-}
+    }

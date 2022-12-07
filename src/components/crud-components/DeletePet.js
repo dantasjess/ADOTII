@@ -29,13 +29,13 @@ export default function DeletePet({ id }) {
         <>
             <Button variant="contained" color="error" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none'}} onClick={handleClickOpen} startIcon={<DeleteIcon />}>Deletar</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-                <DialogTitle id="alert-dialog-title">{'DELETAR'}</DialogTitle>
+                <DialogTitle sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none'}} id="alert-dialog-title">{'DELETAR'}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText id="alert-dialog-description">Tem certeza que deseja deletar o gato?</DialogContentText>
+                    <DialogContentText sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none'}} id="alert-dialog-description">Tem certeza que deseja deletar o gato?</DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancelar</Button>
-                    <Button onClick={handleDelete} color='error'>Deletar</Button>
+                    <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none', backgroundColor: "#red"}} onClick={handleDelete} color='error'>Deletar</Button>
+                    <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 18, textTransform: 'none', backgroundColor: "#09237D"}} onClick={handleClose}>Cancelar</Button>
                 </DialogActions>
             </Dialog>
         </>
