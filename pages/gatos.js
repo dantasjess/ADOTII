@@ -43,10 +43,18 @@ export default function Home() {
         <Box sx={{ width: '100%' }}>
             <Grid container direction="row" justifyContent="center" alignItems="center"> 
                 <Grid item>
-                <Button variant="contained" sx={{backgroundColor: "#09237D", textTransform: 'none', borderRadius: "12px", margin: "0px 50px 40px 0px"}}><Link href="https://docs.google.com/forms/d/e/1FAIpQLSfU5kVmut0bpIO8CXSBYNNsAbIV3xD_Id5M2041SJfavx0m5w/viewform"><Typography sx={{fontFamily: "Comfortaa", fontSize: 18, padding: "1% 200px 1% 200px"}}>Quero adotar</Typography></Link></Button>
+                <Button variant="contained" sx={{backgroundColor: "#09237D", textTransform: 'none', borderRadius: "12px", margin: "0px 50px 40px 0px"}}>
+                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfU5kVmut0bpIO8CXSBYNNsAbIV3xD_Id5M2041SJfavx0m5w/viewform">
+                    <Typography sx={{fontFamily: "Comfortaa", fontSize: 18, padding: "1% 200px 1% 200px"}}>Quero adotar</Typography>
+                  </Link>
+                </Button>
                 </Grid>
                 <Grid>
-                    <Button variant="contained" sx={{backgroundColor: "#09237D", textTransform: 'none', borderRadius: "12px", margin: "0px 0px 40px 50px"}}><Typography sx={{fontFamily: "Comfortaa", fontSize: 15, padding: "1% 200px 1% 200px"}}>Quero apadrinhar</Typography></Button>
+                    <Button variant="contained" sx={{backgroundColor: "#09237D", textTransform: 'none', borderRadius: "12px", margin: "0px 0px 40px 50px"}}>
+                      <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeZQNnp7uHCu27DdWsfj4c1Y6VTro8ETGTRopeZrNJBA1aOdw/viewform">
+                        <Typography sx={{fontFamily: "Comfortaa", fontSize: 15, padding: "1% 200px 1% 200px"}}>Quero apadrinhar</Typography>
+                      </Link>
+                    </Button>
                 </Grid>
             </Grid>
         </Box>

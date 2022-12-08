@@ -100,8 +100,12 @@ export default function DetailPet({ id, pet }) {
                 
             </DialogContent>
             <DialogActions sx={{justifyContent:"center", alignItems:"flex-start"}}>
-                <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 15, textTransform: 'none', backgroundColor: "#09237D", padding: "1% 50px 1% 50px"}}><Link href="https://docs.google.com/forms/d/e/1FAIpQLSfU5kVmut0bpIO8CXSBYNNsAbIV3xD_Id5M2041SJfavx0m5w/viewform">Adotar</Link></Button>
-                <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 15, textTransform: 'none', backgroundColor: "#09237D", padding: "1% 50px 1% 50px"}}><Link href="https://docs.google.com/forms/d/e/1FAIpQLSeZQNnp7uHCu27DdWsfj4c1Y6VTro8ETGTRopeZrNJBA1aOdw/viewform">Apadrinhar</Link></Button>
+                <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 15, textTransform: 'none', backgroundColor: "#09237D", padding: "1% 50px 1% 50px"}}>
+                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfU5kVmut0bpIO8CXSBYNNsAbIV3xD_Id5M2041SJfavx0m5w/viewform">Adotar</Link>
+                </Button>
+                <Button variant="contained" sx={{fontFamily: "Comfortaa", fontSize: 15, textTransform: 'none', backgroundColor: "#09237D", padding: "1% 50px 1% 50px"}}>
+                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSeZQNnp7uHCu27DdWsfj4c1Y6VTro8ETGTRopeZrNJBA1aOdw/viewform">Apadrinhar</Link>
+                </Button>
             </DialogActions>
             </Grid>
         </Grid>
