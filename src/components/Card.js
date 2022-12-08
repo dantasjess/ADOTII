@@ -48,7 +48,7 @@ export default function MediaCard({ name, desc, id, pet, logged }) {
                 <Typography variant="h6" component="div" sx={{ fontFamily: 'Comfortaa', fontWeight: "bolder", color: "#EC7E31"}}>
                 {name}
                 </Typography>
-                {!logged ? (
+                {(endereçoAtual != '/pet-list') ? (
                   <Typography variant = "body2" sx={{ fontFamily: 'Comfortaa', color: "#09237D"}}>{desc}</Typography>
                 ) : null }
             </CardContent>
