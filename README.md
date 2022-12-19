@@ -35,6 +35,10 @@ Rode o programa no terminal:
 
 Em seguida, acesse o site no link http://localhost:3000/
 
+## Visualização pelo Vercel
+
+adotii.vercel.app
+
 ## Tecnologias utilizadas
 
 - React
