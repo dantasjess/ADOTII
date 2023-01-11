@@ -5,6 +5,22 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import FolderIcon from '@mui/icons-material/Folder';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 import { database, onValue, child, ref } from '../src/firebase';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../src/contexts/AuthContext';
@@ -58,8 +74,51 @@ export default function Home() {
           </Grid>
         </Grid>
         <TitleSection text="Por que adotar?"/>
+
+        <Box sx={{ flexGrow: 2}}>
+        <Grid container spacing={15}>
+          <Grid item xs={12} md={4}>
+            <Typography sx={{ mt: 4, mb: 2, fontSize: 20, color:"#EC7E31", fontWeight:"bold", fontFamily:"Comfortaa"}} component="div">
+              O som do ronronar é mágico
+            </Typography>
+              <List>
+                  <ListItem>
+                    <ListItemAvatar>
+                      <img src='item1.png' widht="100px" height="100px"/>
+                    </ListItemAvatar>
+                    <Typography fontSize="12" color="#09237D" fontFamily="Comfortaa">O som do ronronar cura, relaxa os músculos e normaliza a pressão.</Typography>
+                  </ListItem>
+              </List>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography sx={{ mt: 4, mb: 2, fontSize: 20, color:"#EC7E31", fontWeight:"bold", fontFamily:"Comfortaa" }} component="div">
+              São tão quentinhos...
+            </Typography>
+              <List>
+                  <ListItem>
+                    <ListItemAvatar>
+                      <img src='item2.png' widht="100px" height="100px"/>
+                    </ListItemAvatar>
+                    <Typography fontSize="12" color="#09237D" fontFamily="Comfortaa" marginLeft="10px">Os gatos aquecem, eles são literalmente quentinhos. Sua temperatura corporal é de 39 graus celsius!</Typography>
+                  </ListItem>
+              </List>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography sx={{ mt: 4, mb: 2, fontSize: 20, color:"#EC7E31", fontWeight:"bold", fontFamily:"Comfortaa" }} component="div">
+              Terapia pra que?
+            </Typography>
+              <List>
+                  <ListItem>
+                    <ListItemAvatar>
+                      <img src='item3.png' widht="100px" height="100px"/>
+                    </ListItemAvatar>
+                    <Typography fontSize="12" color="#09237D" fontFamily="Comfortaa">Acariciar um gato tranquiliza e tira o estresse.</Typography>
+                  </ListItem>
+              </List>
+          </Grid>
+        </Grid>
+    </Box>
       </section>
-      
     </>
   );
 }
